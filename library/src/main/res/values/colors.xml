@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="transparent">#00000000</color>
+    <color name="transparent1">#10000000</color>
+    <color name="transparent2">#20000000</color>
+    <color name="transparent3">#30000000</color>
+    <color name="transparent4">#40000000</color>
+    <color name="transparent5">#50000000</color>
+    <color name="transparent6">#60000000</color>
+    <color name="transparent8">#80000000</color>
+    <color name="transparent9">#90000000</color>
+    <color name="transparent10">#10000000</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="red">#ff0000</color>
+
+    <color name="gray_acacac">#acacac</color>
+
+    <color name="stroke">#f2f2f2</color>
+    <color name="toolbar_background">#f2f2f2</color>
+    <color name="common_text">#333333</color>
+
+    <drawable name="white">@color/white</drawable>
+    <drawable name="black">@color/black</drawable>
+
+</resources>

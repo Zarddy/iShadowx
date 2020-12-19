@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_size_tiny">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_huge">20sp</dimen>
+
+    <dimen name="view_divide_height_tiny">6dp</dimen>
+    <dimen name="view_divide_height_short">10dp</dimen>
+    <dimen name="view_divide_height">15dp</dimen>
+    <dimen name="view_divide_height_big">20dp</dimen>
+    <dimen name="view_divide_height_large">25dp</dimen>
+    <dimen name="view_divide_height_huge">30dp</dimen>
+
+    <dimen name="alert_dialog_width">300dp</dimen>
+
+</resources>

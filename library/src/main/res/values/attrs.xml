@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- ClearEditText -->
+    <declare-styleable name="ClearEditText">
+        <attr name="clearButton" format="reference" />
+    </declare-styleable>
+    <!-- /ClearEditText -->
+
+    <declare-styleable name="NumberAddSubView">
+        <attr name="nasv_value" format="integer|reference"/>
+        <attr name="nasv_minValue" format="integer|reference"/>
+        <attr name="nasv_maxValue" format="integer|reference"/>
+        <attr name="nasv_unlimited" format="boolean|reference"/>
+        <attr name="nasv_btnAddBackground" format="reference"/>
+        <attr name="nasv_btnSubBackground" format="reference"/>
+        <attr name="nasv_textViewBackground" format="reference"/>
+        <attr name="nasv_buttonSize" format="dimension" />
+    </declare-styleable>
+
+</resources>

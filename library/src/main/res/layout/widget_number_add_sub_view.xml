@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@drawable/shape_bg_white_1dp_solid_stroke">
+
+    <Button
+        android:id="@+id/button_sub"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="-"
+        android:textSize="@dimen/text_size_small"
+        android:background="@drawable/selector_bg_white_e4e4e4"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+
+    <View style="@style/line_v_1dp"/>
+
+    <TextView
+        android:id="@+id/txt_number"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:hint="0"
+        android:textSize="@dimen/text_size_small"/>
+
+    <View style="@style/line_v_1dp"/>
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_margin="1dp"
+        android:gravity="center"
+        android:text="+"
+        android:textSize="@dimen/text_size_small"
+        android:background="@drawable/selector_bg_white_e4e4e4"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+
+</LinearLayout>

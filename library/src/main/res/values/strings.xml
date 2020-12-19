@@ -1,0 +1,34 @@
+<resources>
+    <string name="button_dialog_ok">确定</string>
+    <string name="button_dialog_cancel">取消</string>
+
+    <!-- 权限 -->
+    <string name="toast_need_write_storage_permission">未取得存储读写权限，请前往应用权限设置打开权限，以正常存储数据。</string>
+    <string name="toast_need_call_permission">未取得拨打电话权限，请前往应用权限设置打开权限，以正常拨打电话。</string>
+    <string name="toast_need_camera_permission">未取得相机权限，请前往应用权限设置打开权限，以正常拍摄照片。</string>
+    <string name="toast_get_permission_failed">权限获取失败</string>
+
+    <string name="toast_copied_to_clipboard">已复制到剪贴板</string>
+
+    <string name="txt_price_symbol">¥</string>
+    <string name="txt_price_symbol_minus">-¥</string>
+    <string name="txt_price_symbol_string">¥%s</string>
+    <string name="txt_price_symbol_decimal_0">¥%.0f</string>
+    <string name="txt_price_symbol_decimal">¥%.2f</string>
+    <string name="txt_price_symbol_decimal_plus">+¥%.2f</string>
+    <string name="txt_price_symbol_decimal_minus">-¥%.2f</string>
+    <string name="txt_price_symbol_string_plus">+¥%s</string>
+    <string name="txt_price_symbol_string_minus">-¥%s</string>
+    <string name="hint_price_symbol_string">¥0</string>
+
+    <string name="txt_price_symbol_euro">€</string>
+    <string name="txt_price_symbol_minus_euro">-€</string>
+    <string name="txt_price_symbol_string_euro">€%s</string>
+    <string name="txt_price_symbol_decimal_0_euro">€%.0f</string>
+    <string name="txt_price_symbol_decimal_euro">€%.2f</string>
+    <string name="txt_price_symbol_decimal_plus_euro">+€%.2f</string>
+    <string name="txt_price_symbol_decimal_minus_euro">-€%.2f</string>
+    <string name="txt_price_symbol_string_plus_euro">+€%s</string>
+    <string name="txt_price_symbol_string_minus_euro">-€%s</string>
+    <string name="hint_price_symbol_string_euro">€0</string>
+</resources>
