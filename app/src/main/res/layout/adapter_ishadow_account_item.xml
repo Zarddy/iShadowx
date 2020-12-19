@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="account"
+            type="club.zarddy.ishadowx.model.IShadowAccount" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/view_divide_height">
+
+        <!-- IP -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_divide_height_short"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ishadowx_ip"
+                android:textSize="@dimen/text_size_big"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{account.ip}"
+                android:textColor="@color/common_text"
+                android:textSize="@dimen/text_size_large"/>
+
+        </LinearLayout>
+
+        <!-- Port -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_divide_height_short"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ishadowx_port"
+                android:textSize="@dimen/text_size_big"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{account.port}"
+                android:textColor="@color/common_text"
+                android:textSize="@dimen/text_size_large"/>
+
+        </LinearLayout>
+
+        <!-- Password -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_divide_height_short"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ishadowx_password"
+                android:textSize="@dimen/text_size_big"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{account.password}"
+                android:textColor="@color/common_text"
+                android:textSize="@dimen/text_size_large"/>
+
+        </LinearLayout>
+
+        <!-- Method -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/view_divide_height_short"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="@string/ishadowx_method"
+                android:textSize="@dimen/text_size_big"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{account.method}"
+                android:textColor="@color/common_text"
+                android:textSize="@dimen/text_size_large"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

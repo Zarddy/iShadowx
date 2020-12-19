@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">iShadowx</string>
     <string name="action_settings">Settings</string>
+
+    <string name="ishadowx_ip">IP:</string>
+    <string name="ishadowx_port">Port:</string>
+    <string name="ishadowx_password">Password:</string>
+    <string name="ishadowx_method">Method:</string>
 </resources>

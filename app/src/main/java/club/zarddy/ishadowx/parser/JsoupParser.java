@@ -1,4 +1,4 @@
-package club.zarddy.ishadowx.utils;
+package club.zarddy.ishadowx.parser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -12,6 +12,11 @@ import club.zarddy.ishadowx.model.IShadowAccount;
 
 public class JsoupParser {
 
+    /**
+     * 将HTML格式数据解析为IShadowAccount对象列表
+     * @param html 网页代码数据
+     * @return IShadowAccount对象列表
+     */
     public static List<IShadowAccount> parse(String html) {
         List<IShadowAccount> list = new ArrayList<>();
         try {
@@ -47,7 +52,7 @@ public class JsoupParser {
                     port = portElement.text().trim();
                 }
 
-                Element pwdElement = element.selectFirst("span[id~=pw*]");
+                Element pwdElement = element.selectFirst("span[id~=pw+]");
                 if (pwdElement != null) {
                     password = pwdElement.text().trim();
                 }
@@ -59,12 +64,6 @@ public class JsoupParser {
                         method = method.substring(method.indexOf(":") + 1).trim();
                     }
                 }
-
-                System.out.println("IP: " + ip);
-                System.out.println("Port: " + port);
-                System.out.println("Password: " + password);
-                System.out.println("Method: " + method);
-                System.out.println();
 
                 list.add(new IShadowAccount(ip, port, password, method));
             }

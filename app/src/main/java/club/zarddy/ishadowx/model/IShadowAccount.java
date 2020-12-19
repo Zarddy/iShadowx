@@ -1,5 +1,9 @@
 package club.zarddy.ishadowx.model;
 
+import androidx.annotation.NonNull;
+
+import java.util.Locale;
+
 import lombok.Data;
 
 @Data
@@ -22,5 +26,12 @@ public class IShadowAccount {
         this.port = port;
         this.password = password;
         this.method = method;
+    }
+
+    @Override
+    @NonNull
+    public String toString() {
+        return String.format(Locale.getDefault(), "IP: %s\r\nPort: %s\r\nPassword: %s\r\nMethod: %s",
+                ip, port, password, method);
     }
 }

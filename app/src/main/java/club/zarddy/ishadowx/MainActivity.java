@@ -1,122 +1,89 @@
 package club.zarddy.ishadowx;
 
-import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
+import club.zarddy.ishadowx.adapter.IShadowAccountListAdapter;
+import club.zarddy.ishadowx.databinding.ActivityMainBinding;
 import club.zarddy.ishadowx.model.IShadowAccount;
-import club.zarddy.ishadowx.utils.JsoupParser;
-import okhttp3.CipherSuite;
-import okhttp3.ConnectionSpec;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.TlsVersion;
+import club.zarddy.ishadowx.viewmodel.MainViewModel;
+import club.zarddy.library.adapter.OnItemClickListener;
+import club.zarddy.library.base.BaseActivity;
+import club.zarddy.library.util.DeviceUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBinding> {
+
+    private IShadowAccountListAdapter mListAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected MainViewModel initViewModel() {
+        return ViewModelProviders.of(this).get(MainViewModel.class);
+    }
+
+    @Override
+    protected int getContextViewId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
+        mListAdapter = new IShadowAccountListAdapter();
+        this.mDataBinding.layoutContentMain.recyclerView.setLayoutManager(layoutManager);
+        this.mDataBinding.layoutContentMain.recyclerView.setAdapter(mListAdapter);
+    }
+
+    @Override
+    protected void setData() {
+        // 加载本地缓存数据
+        mViewModel.loadAccountListCache();
+
+        // 列表数据
+        mViewModel.getIShadowAccountList().observe(this, new Observer<List<IShadowAccount>>() {
             @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-                getInfo();
+            public void onChanged(List<IShadowAccount> accounts) {
+                mListAdapter.setNewData(accounts);
             }
         });
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    protected void setEvent() {
+        mListAdapter.setOnItemClickListener(new OnItemClickListener<IShadowAccount>() {
+            @Override
+            public void onItemClick(View view, IShadowAccount iShadowAccount, int position) {
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, IShadowAccount iShadowAccount, int position) {
+                // 长按，复制账号信息
+                DeviceUtils.copyToClipboard(MainActivity.this, "iShadowAccount", iShadowAccount.toString());
+                showMessage("已复制到剪贴板");
+                return true;
+            }
+        });
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.fab:
+                mViewModel.fetchAccountList();
+                break;
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+            default:
+                super.onClick(view);
+                break;
         }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-//    OkHttpClient client = new OkHttpClient();
-    ConnectionSpec spec = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-            .tlsVersions(TlsVersion.TLS_1_2)
-            .cipherSuites(
-                    CipherSuite.TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
-                    CipherSuite.TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
-                    CipherSuite.TLS_DHE_RSA_WITH_AES_128_GCM_SHA256)
-            .build();
-
-    OkHttpClient client = new OkHttpClient.Builder()
-            .connectionSpecs(Collections.singletonList(spec))
-            .build();
-
-    String runUrl(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-
-        try (Response response = client.newCall(request).execute()) {
-            return response.body().string();
-        }
-    }
-
-    private void getInfo() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    String html = runUrl(Config.url);
-
-                    List<IShadowAccount> list = JsoupParser.parse(html);
-
-                    System.out.println(list.size());
-
-//                    OkHttpClient client = new OkHttpClient();//创建OkHttpClient对象
-//                    Request request = new Request.Builder()
-//                            .url("http://www.baidu.com")//请求接口。如果需要传参拼接到接口后面。
-//                            .build();//创建Request 对象
-//                    Response response = null;
-//                    response = client.newCall(request).execute();//得到Response 对象
-//                    if (response.isSuccessful()) {
-//                        Log.d("kwwl","response.code()=="+response.code());
-//                        Log.d("kwwl","response.message()=="+response.message());
-//                        Log.d("kwwl","res=="+response.body().string());
-//                        //此时的代码执行在子线程，修改UI的操作请使用handler跳转到UI线程。
-//                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
 }
